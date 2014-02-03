@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/layout_selectwebviewitem"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:visibility="visible" >
+
+    <TextView
+        android:id="@+id/selectwebviewitem_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal|center"
+        android:paddingBottom="10dp"
+        android:text="@string/webviewtitle"
+        android:textAlignment="center"
+        android:textColor="@color/selectwebview_text_color" />
+
+    <ImageView
+        android:id="@+id/selectwebviewitem_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:src="@android:drawable/alert_light_frame" />
+
+	</LinearLayout>

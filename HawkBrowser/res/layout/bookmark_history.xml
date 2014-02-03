@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TabHost xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:id="@android:id/tabhost">
+    
+    <LinearLayout android:layout_width="match_parent"
+        android:orientation="vertical" 
+        android:layout_height="match_parent">
+          
+        <TabWidget
+            android:id="@android:id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" >
+
+        </TabWidget>
+        
+		<LinearLayout android:layout_width="match_parent"
+	        android:orientation="vertical" 
+	        android:layout_height="match_parent">
+	        
+			<LinearLayout android:layout_width="match_parent"
+		        android:orientation="vertical" 
+		        android:layout_weight="1"
+		        android:layout_height="0dp">
+		        
+		        <FrameLayout android:id="@android:id/tabcontent"
+		            android:layout_height="match_parent" 
+		            android:layout_width="match_parent">
+		            
+		                <ListView
+		                    android:id="@+id/bookmarkhistory_bookmark"
+		                    android:layout_width="match_parent"
+		                    android:layout_height="wrap_content" >
+		                </ListView>
+		            
+		                <ExpandableListView
+		                    android:id="@+id/bookmarkhistory_history"
+		                    android:layout_width="match_parent"
+		                    android:layout_height="wrap_content" >
+		                </ExpandableListView>
+		            
+		        </FrameLayout>
+	        </LinearLayout>
+        
+			<LinearLayout
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:background="@drawable/toolbar_bg"
+			    android:orientation="horizontal" >
+
+			    <Button
+			        android:id="@+id/bookmarkhistory_management"
+			        android:layout_width="0dp"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="1"
+			        android:background="@drawable/toolbar_button_bg"
+			        android:text="@string/management" >
+			    </Button>
+
+			    <Button
+			        android:id="@+id/bookmarkhistory_sync"
+			        android:layout_width="0dp"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="1"
+			        android:background="@drawable/toolbar_button_bg"
+			        android:text="@string/sync" >
+			    </Button>
+
+			    <Button
+			        android:id="@+id/bookmarkhistory_return"
+			        android:layout_width="0dp"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="1"
+			        android:background="@drawable/toolbar_button_bg"
+			        android:text="@string/back" >
+			    </Button>
+			</LinearLayout>
+
+		</LinearLayout>
+    </LinearLayout>
+        
+</TabHost>

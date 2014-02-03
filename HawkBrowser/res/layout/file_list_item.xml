@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/listview_item_padding"
+    android:gravity="center_vertical" >
+
+	<CheckBox
+        android:id="@+id/file_item_check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:focusable="false"
+        android:clickable="false"
+        android:checked="false" />
+    
+    <ImageView
+        android:id="@+id/file_item_icon"
+        android:layout_width="@dimen/listview_item_iconwidth"
+        android:layout_height="@dimen/listview_item_iconheight"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/file_item_check"
+        android:layout_marginLeft="@dimen/listview_item_margin"
+        android:src="@drawable/icon_folder" />
+
+    <TextView
+        android:id="@+id/file_item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/file_item_icon"
+        android:layout_marginLeft="@dimen/listview_item_margin"
+        android:text="filename"
+        android:textSize="@dimen/explistview_group_fontsize" />
+
+    <ImageView
+        android:id="@+id/file_item_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/shoot_icon" />
+
+</RelativeLayout>

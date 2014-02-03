@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_popmenu"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/popmenu_height"
+    android:background="@drawable/pop_menu_bg"
+    android:gravity="fill"
+    android:orientation="horizontal" >
+
+    <TableRow
+        android:id="@+id/popmenu_row1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/popmenu_margin" >
+
+        <Button
+            android:id="@+id/popmenu_bokmarkhistory"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/popmenu_button_bg"
+            android:drawableTop="@drawable/pop_menu_history"
+            android:text="@string/popmenu_bookmarkhistory"
+            android:textColor="@color/popmenu_text_color"
+            android:textSize="@dimen/popmenu_textSize" />
+
+        <Button
+            android:id="@+id/popmenu_addbookmark"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/popmenu_button_bg"
+            android:drawableTop="@drawable/pop_menu_add_bookmark"
+            android:text="@string/popmenu_addbookmark"
+            android:textColor="@color/popmenu_text_color"
+            android:textSize="@dimen/popmenu_textSize" />
+
+        <Button
+            android:id="@+id/popmenu_refresh"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/popmenu_button_bg"
+            android:drawableTop="@drawable/pop_menu_refresh"
+            android:text="@string/popmenu_refresh"
+            android:textColor="@color/popmenu_text_color"
+            android:textSize="@dimen/popmenu_textSize" />
+
+        <Button
+            android:id="@+id/popmenu_systemsetting"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/popmenu_button_bg"
+            android:drawableTop="@drawable/pop_menu_system_setting"
+            android:text="@string/popmenu_systemsetting"
+            android:textColor="@color/popmenu_text_color"
+            android:textSize="@dimen/popmenu_textSize" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/popmenu_row2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/popmenu_margin" >
+
+        <Button
+            android:id="@+id/popmenu_downloadmanager"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/popmenu_button_bg"
+            android:drawableTop="@drawable/pop_menu_download"
+            android:text="@string/popmenu_downloadmanager"
+            android:textColor="@color/popmenu_text_color"
+            android:textSize="@dimen/popmenu_textSize" />
+
+        <Button
+            android:id="@+id/popmenu_skin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/popmenu_button_bg"
+            android:drawableTop="@drawable/pop_menu_skin"
+            android:text="@string/popmenu_skin"
+            android:textColor="@color/popmenu_text_color"
+            android:textSize="@dimen/popmenu_textSize" />
+
+        <Button
+            android:id="@+id/popmenu_help"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/popmenu_button_bg"
+            android:drawableTop="@drawable/pop_menu_help"
+            android:text="@string/popmenu_help"
+            android:textColor="@color/popmenu_text_color"
+            android:textSize="@dimen/popmenu_textSize" />
+
+        <Button
+            android:id="@+id/popmenu_exit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/popmenu_button_bg"
+            android:drawableTop="@drawable/pop_menu_quit"
+            android:text="@string/popmenu_exit"
+            android:textColor="@color/popmenu_text_color"
+            android:textSize="@dimen/popmenu_textSize" />
+    </TableRow>
+
+</TableLayout>

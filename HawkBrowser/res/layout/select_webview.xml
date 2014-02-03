@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_selectwebview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    android:alpha="0.5"
+    android:orientation="horizontal" >
+    
+    <include layout="@layout/select_webview_item"
+		android:id="@+id/layout_selectwebviewitem1" />
+    
+    <include layout="@layout/select_webview_item"
+		android:id="@+id/layout_selectwebviewitem2" />
+    
+    <include layout="@layout/select_webview_item"
+		android:id="@+id/layout_selectwebviewitem3" />
+    
+    <!-- 
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:id="@+id/layout_selectwebviewitem1"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:layout_weight="1"
+	    android:visibility="visible"
+	    android:orientation="vertical"
+	    android:paddingBottom="10dp"
+	    android:paddingLeft="10dp"
+	    android:paddingRight="10dp" >
+
+	    <TextView
+	        android:id="@+id/selectwebviewitem_title"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"
+	        android:gravity="center_horizontal|center"
+	        android:paddingBottom="10dp"
+	        android:text="@string/webviewtitle"
+	        android:textAlignment="center" />
+	
+	    <ImageView
+	        android:id="@+id/selectwebviewitem_image"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="5"
+	        android:src="@android:drawable/alert_light_frame" />
+
+	</LinearLayout>
+	
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:id="@+id/layout_selectwebviewitem2"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:layout_weight="1"
+	    android:visibility="invisible"
+	    android:orientation="vertical"
+	    android:paddingBottom="10dp"
+	    android:paddingLeft="10dp"
+	    android:paddingRight="10dp" >
+
+    <TextView
+        android:id="@+id/selectwebviewitem_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_horizontal|center"
+        android:paddingBottom="10dp"
+        android:text="@string/webviewtitle"
+        android:textAlignment="center" />
+
+    <ImageView
+        android:id="@+id/selectwebviewitem_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="5"
+        android:src="@android:drawable/alert_light_frame" />
+
+	</LinearLayout>
+       
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:id="@+id/layout_selectwebviewitem3"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:layout_weight="1"
+	    android:visibility="invisible"
+	    android:orientation="vertical"
+	    android:paddingBottom="10dp"
+	    android:paddingLeft="10dp"
+	    android:paddingRight="10dp" >
+
+    <TextView
+        android:id="@+id/selectwebviewitem_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_horizontal|center"
+        android:paddingBottom="10dp"
+        android:text="@string/webviewtitle"
+        android:textAlignment="center" />
+
+    <ImageView
+        android:id="@+id/selectwebviewitem_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="5"
+        android:src="@android:drawable/alert_light_frame" />
+
+	</LinearLayout>
+        -->
+       
+</LinearLayout>

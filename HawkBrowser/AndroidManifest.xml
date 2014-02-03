@@ -1,0 +1,60 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.hawkbrowser"
+    android:installLocation="preferExternal"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="9"
+        android:targetSdkVersion="16" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" 
+        android:hardwareAccelerated="false"
+        android:name=".shell.HawkBrowserApplication">
+        
+         <activity android:name=".shell.HawkBrowser" 
+             android:windowSoftInputMode="adjustPan"
+             android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            
+            <intent-filter>
+				<action android:name="android.intent.action.VIEW"></action>
+				<category android:name="android.intent.category.DEFAULT"></category>
+				<category android:name="android.intent.category.BROWSABLE"></category>
+				<data android:scheme="http" />
+				<data android:scheme="https" />
+			</intent-filter>
+            
+            <!-- 
+            <intent-filter android:priority="100" >
+            	<action android:name="android.intent.action.VIEW"  />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="http"/>
+            </intent-filter>
+             -->
+        </activity>
+        
+		<activity android:name=".app.BookmarkActivity" />
+		<activity android:name=".app.DownloadActivity" />
+		<activity android:name=".app.SettingActivity" />
+		
+		<activity android:name=".shell.ShortCut">
+		    <intent-filter>
+		        <action android:name="android.intent.action.CREATE_SHORTCUT"/>
+		        <action android:name="android.intent.action.DEFAULT"/>
+		    </intent-filter>
+		</activity>
+		
+    </application>
+    
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+</manifest>

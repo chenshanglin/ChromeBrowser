@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TabHost xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:id="@android:id/tabhost">
+    
+    <LinearLayout android:layout_width="match_parent"
+        android:orientation="vertical" 
+        android:layout_height="match_parent">
+          
+        <TabWidget
+            android:id="@android:id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" >
+
+        </TabWidget>
+        
+		<LinearLayout android:layout_width="match_parent"
+	        android:orientation="vertical" 
+	        android:layout_height="match_parent">
+	        
+	        <FrameLayout android:id="@android:id/tabcontent"
+	            android:layout_weight="1"
+	            android:layout_height="0dp" 
+	            android:layout_width="match_parent">
+	            
+	                <ExpandableListView
+	                    android:id="@+id/download_download"
+	                    android:layout_width="match_parent"
+	                    android:layout_height="wrap_content" >
+	                </ExpandableListView>
+	            
+	                <ListView
+	                    android:id="@+id/download_file"
+	                    android:layout_width="match_parent"
+	                    android:layout_height="wrap_content" >
+	                </ListView>
+	            
+	        </FrameLayout>
+        
+	        <FrameLayout
+	            android:layout_width="match_parent"
+				android:layout_height="wrap_content" >
+	                
+				<LinearLayout
+				    android:id="@+id/download_show_view"
+				    android:layout_width="match_parent"
+				    android:layout_height="wrap_content"
+				    android:background="@drawable/toolbar_bg"
+				    android:orientation="horizontal" >
+	
+				    <Button
+				        android:id="@+id/download_management"
+				        android:layout_width="0dp"
+				        android:layout_height="wrap_content"
+				        android:layout_weight="1"
+				        android:background="@drawable/toolbar_button_bg"
+				        android:text="@string/management" >
+				    </Button>
+	
+				    <Button
+				        android:id="@+id/download_clear"
+				        android:layout_width="0dp"
+				        android:layout_height="wrap_content"
+				        android:layout_weight="1"
+				        android:background="@drawable/toolbar_button_bg"
+				        android:text="@string/clear" >
+				    </Button>
+	
+				    <Button
+				        android:id="@+id/download_return"
+				        android:layout_width="0dp"
+				        android:layout_height="wrap_content"
+				        android:layout_weight="1"
+				        android:background="@drawable/toolbar_button_bg"
+				        android:text="@string/back" >
+				    </Button>
+				</LinearLayout>
+				
+				<LinearLayout
+				    android:id="@+id/download_management_view"
+				    android:layout_width="match_parent"
+				    android:layout_height="wrap_content"
+				    android:background="@drawable/toolbar_bg"
+					android:visibility="gone"
+				    android:orientation="horizontal" >
+	
+				    <Button
+				        android:id="@+id/download_finish"
+				        android:layout_width="0dp"
+				        android:layout_height="match_parent"
+				        android:layout_weight="1"
+				        android:background="@drawable/toolbar_button_bg"
+				        android:text="@string/finish" >
+				    </Button>
+	
+				    <Button
+				        android:id="@+id/download_redownload"
+				        android:layout_width="0dp"
+				        android:layout_height="match_parent"
+				        android:layout_weight="1"
+				        android:background="@drawable/toolbar_button_bg"
+				        android:text="@string/redownload" >
+				    </Button>
+	
+				    <Button
+				        android:id="@+id/download_deletetask"
+				        android:layout_width="0dp"
+				        android:layout_height="match_parent"
+				        android:layout_weight="1"
+				        android:enabled="false"
+				        android:background="@drawable/toolbar_button_bg"
+				        android:text="@string/delete" >
+				    </Button>
+				</LinearLayout>
+			</FrameLayout>
+
+		</LinearLayout>
+    </LinearLayout>
+        
+</TabHost>

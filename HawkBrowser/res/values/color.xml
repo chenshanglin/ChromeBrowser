@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <color name="selectwebview_text_color">#99ccff</color>  
+    <color name="bottom_spinner_color">#99ccff</color>
+    <color name="addresssbar_spinner_color">#CCCCCC</color>
+    <color name="popmenu_text_color">@android:color/white</color>
+    <color name="tab_widget_color">#DFE6E4</color>
+    <color name="tab_widget_line_color">#33B5E5</color>
+    <color name="progressbar_color">#00CC66</color>
+    <color name="progressbar_pause_color">#CCCCCC</color>
+    <color name="light_sky_blue">#42B3FE</color>
+    <color name="gray_bg">#EAEAEA</color>
+    <color name="bottom_gray_bg">#EEF6F6</color>
+</resources>

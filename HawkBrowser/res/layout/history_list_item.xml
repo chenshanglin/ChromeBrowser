@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/history_list_item_title"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="left"
+    android:lines="2"
+    android:maxLines="2"
+    android:text="abcdef"
+    android:layout_margin="@dimen/history_item_margin"
+    android:drawableLeft="@drawable/time"
+    android:drawablePadding="@dimen/history_item_padding"
+    android:padding="@dimen/history_item_padding"
+    android:textAlignment="viewStart" >
+</TextView>
+

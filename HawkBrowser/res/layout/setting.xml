@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/setting"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+	<TextView
+        android:id="@+id/setting_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/light_sky_blue"
+        android:padding="@dimen/top_title_padding"
+        android:layout_weight="0"
+        android:gravity="center"
+        android:text="@string/setting"
+        android:textColor="@android:color/white"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+	
+	<ScrollView
+	    android:id="@+id/setting_scrollview"
+	    android:background="@color/gray_bg"
+	    android:layout_weight="1"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent" >
+
+		<LinearLayout
+		    android:layout_width="match_parent"
+		    android:layout_height="match_parent"
+		    android:orientation="vertical" >
+
+			<RelativeLayout
+			    android:id="@+id/setting_fontsize"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:layout_marginTop="@dimen/listview_item_margin"
+			    android:layout_marginLeft="@dimen/listview_item_margin"
+			    android:layout_marginRight="@dimen/listview_item_margin"
+			    android:gravity="center_horizontal"
+			    android:clickable="true"
+			    android:focusable="true"
+				android:background="@drawable/setting_item_bg"
+			    android:padding="@dimen/listview_item_padding" >
+					    
+				<TextView
+				    android:id="@+id/setting_fontsize_text"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:text="@string/font_size"
+				    android:gravity="center"
+				    android:clickable="false"
+				    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+				<ImageView
+				    android:id="@+id/setting_fontsize_icon"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_alignParentRight="true"
+				    android:layout_centerVertical="true"
+				    android:clickable="false"
+				    android:src="@drawable/arrow_down" />
+				
+				<TextView
+				    android:id="@+id/setting_fontsize_size"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:gravity="center"
+				    android:clickable="false"
+				    android:layout_marginRight="@dimen/listview_item_margin"
+				    android:layout_toLeftOf="@id/setting_fontsize_icon"
+				    android:text="@string/medium_default" />	  
+								    
+			</RelativeLayout>
+			
+			<RelativeLayout
+			    android:id="@+id/setting_turnpage"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:layout_marginLeft="@dimen/listview_item_margin"
+			    android:layout_marginRight="@dimen/listview_item_margin"
+			    android:layout_marginTop="0.5dp"
+			    android:gravity="center_horizontal"
+			    android:clickable="true"
+			    android:focusable="true"
+			    android:background="@drawable/setting_item_bg"
+			    android:padding="@dimen/listview_item_padding" >
+					    
+				<TextView
+				    android:id="@+id/setting_turnpage_text"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:text="@string/turnpage_button"
+				    android:gravity="center"
+				    android:clickable="false"
+				    android:textAppearance="?android:attr/textAppearanceMedium" />
+				
+				<ImageView
+				    android:id="@+id/setting_turnpage_icon"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_alignParentRight="true"
+				    android:layout_centerVertical="true"
+				    android:clickable="false"
+				    android:src="@drawable/arrow_down" />
+
+				<TextView
+				    android:id="@+id/setting_turnpage_value"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:gravity="center"
+				    android:clickable="false"
+				    android:layout_marginRight="@dimen/listview_item_margin"
+				    android:layout_toLeftOf="@id/setting_turnpage_icon"
+				    android:text="@string/none" />	  
+								    
+			</RelativeLayout>
+			
+			<RelativeLayout
+			    android:id="@+id/setting_rotatescreen"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:layout_marginLeft="@dimen/listview_item_margin"
+			    android:layout_marginRight="@dimen/listview_item_margin"
+			    android:layout_marginTop="0.5dp"
+			    android:gravity="center_horizontal"
+			    android:clickable="true"
+			    android:focusable="true"
+			    android:background="@drawable/setting_item_bg"
+			    android:padding="@dimen/listview_item_padding" >
+					    
+				<TextView
+				    android:id="@+id/setting_rotatescreen_text"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:text="@string/rotate_screen"
+				    android:gravity="center"
+				    android:clickable="false"
+				    android:textAppearance="?android:attr/textAppearanceMedium" />
+				
+				<ImageView
+				    android:id="@+id/setting_rotatescreen_icon"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_alignParentRight="true"
+				    android:layout_centerVertical="true"
+				    android:clickable="false"
+				    android:src="@drawable/arrow_down" />
+
+				<TextView
+				    android:id="@+id/setting_rotatescreen_value"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:gravity="center"
+				    android:clickable="false"
+				    android:layout_marginRight="@dimen/listview_item_margin"
+				    android:layout_toLeftOf="@id/setting_rotatescreen_icon"
+				    android:text="@string/vertical_screen" />	  
+								    
+			</RelativeLayout>
+			
+			<RelativeLayout
+			    android:id="@+id/setting_accelerate"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:layout_marginLeft="@dimen/listview_item_margin"
+			    android:layout_marginRight="@dimen/listview_item_margin"
+			    android:layout_marginTop="0.5dp"
+			    android:gravity="center_horizontal"
+			    android:clickable="true"
+			    android:focusable="true"
+			    android:background="@drawable/setting_item_bg"
+			    android:padding="@dimen/listview_item_padding" >
+					    
+				<TextView
+				    android:id="@+id/setting_accelerate_text"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_centerVertical="true"
+				    android:clickable="false"
+				    android:text="@string/accelerate"
+				    android:textAppearance="?android:attr/textAppearanceMedium" />
+				
+				<ImageView
+				    android:id="@+id/setting_accelerate_icon"
+				    android:layout_width="16dp"
+				    android:layout_height="16dp"
+				    android:layout_alignParentRight="true"
+				    android:layout_alignTop="@+id/setting_accelerate_text"
+				    android:clickable="false"
+				    android:src="@drawable/toolbar_forward_normal" />
+								    
+			</RelativeLayout>
+			
+			<RelativeLayout
+			    android:id="@+id/setting_privatemode"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:layout_marginLeft="@dimen/listview_item_margin"
+			    android:layout_marginRight="@dimen/listview_item_margin"
+			    android:layout_marginTop="@dimen/listview_item_margin"
+			    android:gravity="center_horizontal"
+			    android:clickable="true"
+			    android:focusable="true"
+			    android:background="@drawable/setting_item_bg"
+			    android:padding="@dimen/listview_item_padding" >
+					    
+				<TextView
+				    android:id="@+id/setting_privatemode_text"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_centerVertical="true"
+				    android:clickable="false"
+				    android:text="@string/privatemode"
+				    android:textAppearance="?android:attr/textAppearanceMedium" />
+				
+				<ToggleButton
+				    android:id="@+id/setting_privatemode_togglebutton"
+				    android:layout_width="40dp"
+				    android:layout_height="25dp"
+				    android:layout_alignParentBottom="true"
+				    android:layout_alignParentRight="true"
+				    android:layout_alignParentTop="true"
+				    android:background="@color/gray_bg"
+				    android:clickable="false"
+				    android:textOff="@string/off"
+				    android:textOn="@string/on" />
+							    
+			</RelativeLayout>
+			
+			<RelativeLayout
+			    android:id="@+id/setting_mostvisit"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:layout_marginLeft="@dimen/listview_item_margin"
+			    android:layout_marginRight="@dimen/listview_item_margin"
+			    android:layout_marginTop="0.5dp"
+			    android:gravity="center_horizontal"
+			    android:clickable="true"
+			    android:focusable="true"
+			    android:background="@drawable/setting_item_bg"
+			    android:padding="@dimen/listview_item_padding" >
+					    
+				<TextView
+				    android:id="@+id/setting_mostvisit_text"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_centerVertical="true"
+				    android:clickable="false"
+				    android:text="@string/mostvisit"
+				    android:textAppearance="?android:attr/textAppearanceMedium" />
+				
+				<ToggleButton
+				    android:id="@+id/setting_mostvisit_togglebutton"
+				    android:layout_width="40dp"
+				    android:layout_height="25dp"
+				    android:layout_alignParentBottom="true"
+				    android:layout_alignParentRight="true"
+				    android:layout_alignParentTop="true"
+				    android:background="@color/gray_bg"
+				    android:clickable="false"
+				    android:textOff="@string/off"
+				    android:textOn="@string/on" />
+							    
+			</RelativeLayout>
+
+			<RelativeLayout
+			    android:id="@+id/setting_clearrecord"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:layout_marginLeft="@dimen/listview_item_margin"
+			    android:layout_marginRight="@dimen/listview_item_margin"
+			    android:layout_marginTop="0.5dp"
+			    android:gravity="center_horizontal"
+			    android:clickable="true"
+			    android:focusable="true"
+			    android:background="@drawable/setting_item_bg"
+			    android:padding="@dimen/listview_item_padding" >
+					    
+				<TextView
+				    android:id="@+id/setting_clearrecord_text"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_centerVertical="true"
+				    android:clickable="false"
+				    android:text="@string/clearrecord"
+				    android:textAppearance="?android:attr/textAppearanceMedium" />
+				
+				<ImageView
+				    android:id="@+id/setting_clearrecord_icon"
+				    android:layout_width="16dp"
+				    android:layout_height="16dp"
+				    android:layout_alignParentRight="true"
+				    android:layout_alignTop="@+id/setting_clearrecord_text"
+				    android:clickable="false"
+				    android:src="@drawable/toolbar_forward_normal" />
+								    
+			</RelativeLayout>
+			
+			<RelativeLayout
+			    android:id="@+id/setting_about"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:layout_marginLeft="@dimen/listview_item_margin"
+			    android:layout_marginRight="@dimen/listview_item_margin"
+			    android:layout_marginTop="0.5dp"
+			    android:gravity="center_horizontal"
+			    android:clickable="true"
+			    android:focusable="true"
+			    android:background="@drawable/setting_item_bg"
+			    android:padding="@dimen/listview_item_padding" >
+					    
+				<TextView
+				    android:id="@+id/setting_about_text"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_centerVertical="true"
+				    android:clickable="false"
+				    android:text="@string/about"
+				    android:textAppearance="?android:attr/textAppearanceMedium" />
+				
+				<ImageView
+				    android:id="@+id/setting_about_icon"
+				    android:layout_width="16dp"
+				    android:layout_height="16dp"
+				    android:layout_alignParentRight="true"
+				    android:layout_alignTop="@+id/setting_about_text"
+				    android:clickable="false"
+				    android:src="@drawable/toolbar_forward_normal" />
+								    
+			</RelativeLayout>
+			
+		</LinearLayout>
+		
+	</ScrollView>
+	
+	<RelativeLayout
+        android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:background="@color/bottom_gray_bg"
+	    android:layout_weight="0">
+		
+		<Button
+		    android:id="@+id/setting_back"
+		    android:layout_width="80dp"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentRight="true"
+		    android:background="@drawable/toolbar_button_bg"
+		    android:paddingBottom="@dimen/listview_item_padding"
+		    android:paddingRight="40dp"
+		    android:paddingTop="@dimen/listview_item_padding"
+		    android:text="@string/back"
+		    android:textAppearance="?android:attr/textAppearanceMedium" />
+		
+	</RelativeLayout>
+
+</LinearLayout>

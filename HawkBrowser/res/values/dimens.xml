@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="addressbar_margin">4dp</dimen>
+    <dimen name="progressbar_height">2dp</dimen>
+    <dimen name="addressbar_height">35dp</dimen>
+    <dimen name="popmenu_margin">8dp</dimen>
+    <dimen name="popmenu_textSize">12sp</dimen>
+    <dimen name="popmenu_height">150dp</dimen>
+    <dimen name="bookmark_item_marginleft">5dp</dimen>
+    <dimen name="custom_tab_margin">3dp</dimen>
+    <dimen name="custom_tab_padding">5dp</dimen>
+    <dimen name="bookmark_item_padding">5dp</dimen>
+    <dimen name="custom_tab_linewidth">100dp</dimen>
+    <dimen name="custom_tab_lineheight">3dp</dimen>
+    <dimen name="history_folder_item_margin">10dp</dimen>
+    <dimen name="history_item_margin">5dp</dimen>
+    <dimen name="history_item_marginleft">10dp</dimen>
+    <dimen name="history_item_padding">5dp</dimen>
+    <dimen name="explistview_group_margin">10dp</dimen>
+    <dimen name="explistview_group_fontsize">7pt</dimen>
+    <dimen name="explistview_group_padding">8dp</dimen>
+    <dimen name="listview_item_marginleft">10dp</dimen>
+    <dimen name="listview_item_margin">10dp</dimen>
+    <dimen name="listview_item_padding">10dp</dimen>
+    <dimen name="top_title_padding">10dp</dimen>
+    <dimen name="listview_item_iconwidth">32px</dimen>
+    <dimen name="listview_item_iconheight">32px</dimen>
+</resources>

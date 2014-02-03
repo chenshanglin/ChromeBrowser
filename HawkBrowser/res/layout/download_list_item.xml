@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+
+    <CheckBox
+        android:id="@+id/download_item_check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/listview_item_marginleft"
+        android:visibility="gone"
+        android:checked="false"
+        android:clickable="false"
+        android:focusable="false" />
+
+    <ImageView
+        android:id="@+id/download_list_item_icon"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/listview_item_marginleft"
+        android:src="@drawable/icon_bookmark" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+		android:layout_marginRight="15dp"
+		android:layout_marginLeft="5dp"
+		android:layout_marginTop="5dp"
+		android:layout_marginBottom="5dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/download_listitem_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="file name" />
+
+        <ProgressBar
+            android:id="@+id/download_progressbar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/progressbar_height"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/progressbar_color" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/download_listitem_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="size" />
+
+            <TextView
+                android:id="@+id/download_listitem_speed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="speed" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_frame"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/mainframe_addressbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/addressbar_height"
+        android:background="@drawable/addressbar_bg"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/addressbar_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/addressbar_margin"
+            android:layout_marginLeft="@dimen/addressbar_margin"
+            android:layout_marginTop="@dimen/addressbar_margin"
+            android:layout_weight="1"
+            android:background="@drawable/addressbar_input_bg_normal" />
+	
+    	<ImageButton
+    	    android:id="@+id/addressbar_clearbtn"
+    	    android:layout_width="wrap_content"
+    	    android:layout_height="wrap_content"
+			android:layout_marginRight="@dimen/addressbar_margin"
+			android:layout_marginLeft="@dimen/addressbar_margin"
+			android:layout_marginTop="@dimen/addressbar_margin"
+			android:layout_marginBottom="@dimen/addressbar_margin"
+    	    android:background="@drawable/addressbar_button_bg"
+    	    android:contentDescription="@string/clear"
+    	    android:layout_gravity="center"
+    	    android:src="@drawable/icon_clear" />
+	    
+	    <Spinner
+	        android:id="@+id/addressbar_spinner"
+	        android:layout_width="1dp"
+	        android:layout_height="20dp"
+	        android:layout_gravity="center"
+	        android:layout_marginRight="@dimen/addressbar_margin"
+			android:layout_marginTop="@dimen/addressbar_margin"
+			android:layout_marginBottom="@dimen/addressbar_margin"
+	        android:background="@color/addresssbar_spinner_color"
+	        android:orientation="vertical" />
+
+	    <ImageButton
+	        android:id="@+id/addressbar_gobtn"
+	        android:layout_width="wrap_content"
+	        android:layout_height="match_parent"
+	        android:layout_marginTop="@dimen/addressbar_margin"
+			android:layout_marginBottom="@dimen/addressbar_margin"
+			android:layout_marginRight="@dimen/addressbar_margin"
+	        android:background="@drawable/addressbar_button_bg"
+	        android:contentDescription="@string/go"
+	        android:layout_gravity="center"
+	        android:src="@drawable/icon_go" />
+
+	 </LinearLayout>
+
+     <ProgressBar
+         android:id="@+id/mainframe_progressbar"
+         style="?android:attr/progressBarStyleHorizontal"
+         android:layout_width="match_parent"
+         android:layout_height="@dimen/progressbar_height"
+         android:max="@integer/progressbar_max"
+         android:visibility="gone"
+         />
+    
+    <com.hawkbrowser.core.HawkWebView
+        android:id="@+id/mainframe_webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+    
+   	<Spinner
+   	    android:id="@+id/bottom_spinner"
+   	    android:layout_width="match_parent"
+   	    android:layout_height="1dp"
+   	    android:background="@drawable/zxingscan" />
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/mainframe_navigationbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:background="@drawable/toolbar_bg"
+        android:orientation="horizontal" >
+	    
+	    <ImageButton
+	        android:id="@+id/navigationbar_back"
+	        style="?android:attr/textAppearanceMedium"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_weight="1"
+	        android:background="@drawable/toolbar_button_bg"
+	        android:contentDescription="@string/goback"
+	        android:enabled="false"
+	        android:src="@drawable/toobar_back_button" />
+	
+	    <ImageButton
+	        android:id="@+id/navigationbar_forward"
+	        style="?android:attr/textAppearanceMedium"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_weight="1"
+	        android:enabled="false"
+	        android:background="@drawable/toolbar_button_bg"
+	        android:src="@drawable/toolbar_forward_button"
+	        android:contentDescription="@string/goforward" />
+	
+	    <ImageButton
+	        android:id="@+id/navigationbar_menu"
+	        style="?android:attr/textAppearanceMedium"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_weight="1"
+	        android:contentDescription="@string/menu"
+	        android:background="@drawable/toolbar_button_bg"
+	        android:src="@drawable/toolbar_menu_normal" />
+	
+	    <ImageButton
+	        android:id="@+id/navigationbar_home"
+	        style="?android:attr/textAppearanceMedium"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_weight="1"
+	        android:background="@drawable/toolbar_button_bg"
+	        android:src="@drawable/toolbar_home_normal"
+	        android:contentDescription="@string/home" />
+	    
+	   	<FrameLayout
+	   	    android:id="@+id/navigationbar_selectwindow"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:clickable="true"
+	        android:layout_weight="1" >
+	        
+	   	   	<ImageButton
+		        android:id="@+id/navigationbar_selectwindow_img"
+		        style="?android:attr/textAppearanceMedium"
+		        android:clickable="false"
+		        android:layout_width="match_parent"
+		        android:layout_height="match_parent"
+		        android:background="@drawable/toolbar_button_bg"
+		        android:src="@drawable/toolbar_multi_normal"
+		        android:contentDescription="@string/selectwindow" />
+
+	   	   	<TextView
+	   	   	    android:id="@+id/navigationbar_selectwindow_text"
+	   	   	    android:clickable="false"
+	   	   	    android:layout_width="wrap_content"
+	   	   	    android:layout_height="wrap_content"
+	   	   	    android:paddingRight="2dp"
+	   	   	    android:paddingTop="5dp"
+	   	   	    android:textSize="5pt"
+	   	   	    android:layout_gravity="center"
+	   	   	    android:text="1" />
+   	   	
+		</FrameLayout>
+
+		<!-- 
+	    <com.hawkbrowser.base.ImageButtonText
+	        android:id="@+id/navigationbar_selectwindow"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_weight="1"
+	        android:background="@drawable/toolbar_button_bg"
+	        android:src="@drawable/toolbar_multi_normal"
+	        android:text="1"
+	        android:textSize="5pt" />
+	     -->
+
+   </LinearLayout>
+
+</LinearLayout>
