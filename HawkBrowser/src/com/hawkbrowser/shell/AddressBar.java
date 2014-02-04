@@ -4,9 +4,15 @@ import com.hawkbrowser.R;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnFocusChangeListener;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
 public class AddressBar {
 
@@ -73,5 +79,40 @@ public class AddressBar {
 				mAddressEdit.setText("");				
 			}
 		});
+		
+        mAddressEdit.setOnEditorActionListener(new OnEditorActionListener() {
+        	// on ime go
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((actionId != EditorInfo.IME_ACTION_GO) && (event == null ||
+                        event.getKeyCode() != KeyEvent.KEYCODE_ENTER ||
+                        event.getKeyCode() != KeyEvent.ACTION_DOWN)) {
+                    return false;
+                }
+
+                mListener.onGo(mAddressEdit.getText().toString());
+                
+                mAddressEdit.clearFocus();
+                setKeyboardVisibilityForUrl(false);
+                return true;
+            }
+        });
+        
+        mAddressEdit.setOnFocusChangeListener(new OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                setKeyboardVisibilityForUrl(hasFocus);
+            }
+        });
 	}
+	
+    private void setKeyboardVisibilityForUrl(boolean visible) {
+        InputMethodManager imm = (InputMethodManager) mContext.getSystemService(
+                Context.INPUT_METHOD_SERVICE);
+        if (visible) {
+            imm.showSoftInput(mAddressEdit, InputMethodManager.SHOW_IMPLICIT);
+        } else {
+            imm.hideSoftInputFromWindow(mAddressEdit.getWindowToken(), 0);
+        }
+    }
 }

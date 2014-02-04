@@ -101,6 +101,7 @@ public final class HawkBrowser extends Activity
 			@Override
 			public void onGo(String url) {
 				mCurrentView.loadUrl(url);
+				mCurrentView.requestFocus();
 			}
 		});		
 		
@@ -119,7 +120,7 @@ public final class HawkBrowser extends Activity
 			newView.setVisibility(View.VISIBLE);
 			layout.addView(newView, mIndexOfWebView);
 			
-			mAddressBar.setTitle(newView.getTitle());
+			mAddressBar.setTitle(newView.getUrl());
 			mProgressBar.setProgress(newView.getProgress());
 		}
 		
@@ -291,7 +292,7 @@ public final class HawkBrowser extends Activity
 	// WebChromeClient Listener start
 	@Override
 	public void onReceivedTitle(WebView view, String title) {
-		mAddressBar.setTitle(title);
+		// mAddressBar.setTitle(title);
 	}
 	
 	@Override
@@ -310,6 +311,7 @@ public final class HawkBrowser extends Activity
 	@Override
 	public void onPageFinished(WebView view, String url) {
 		mProgressBar.setVisibility(View.GONE);
+		mAddressBar.setTitle(view.getUrl());
 		setBackForwardState(view);
 		addHistory(view, url);
 	}

@@ -21,6 +21,12 @@
             android:layout_marginLeft="@dimen/addressbar_margin"
             android:layout_marginTop="@dimen/addressbar_margin"
             android:layout_weight="1"
+            android:autoText="true"
+            android:capitalize="sentences"
+            android:singleLine="true"
+            android:selectAllOnFocus="true"
+            android:inputType="textUri"
+            android:imeOptions="actionGo"
             android:background="@drawable/addressbar_input_bg_normal" />
 	
     	<ImageButton

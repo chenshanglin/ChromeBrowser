@@ -21,7 +21,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 
+import com.hawkbrowser.webkit.WebChromeClient;
 import com.hawkbrowser.webkit.WebView;
+import com.hawkbrowser.webkit.WebViewClient;
 
 public class WebViewTestActivity extends Activity {
 
@@ -45,6 +47,7 @@ public class WebViewTestActivity extends Activity {
 //        contentContainer.addView(mAwTestContainerView);
         
         mAwTestContainerView = (WebView) findViewById(R.id.content_container);
+        initWebView(mAwTestContainerView);
         mAwTestContainerView.requestFocus();
 
         initializeUrlField();
@@ -58,11 +61,22 @@ public class WebViewTestActivity extends Activity {
         mAwTestContainerView.loadUrl(startupUrl);
         mUrlTextView.setText(startupUrl);
     }
+    
+    private void initWebView(WebView view) {
+    	view.getSettings().setJavaScriptEnabled(true);
+        
+//    	view.setWebViewClient(new WebViewClient() {
+//            @Override
+//            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+//                return false;
+//            }
+//        });
+    }
 
     private WebView createAwTestContainerView() {
     	
-        WebView testContainerView = new WebView(this);
-        testContainerView.getSettings().setJavaScriptEnabled(true);
+        WebView testContainerView = new WebView(this);        
+        initWebView(testContainerView);
         return testContainerView;
     }
 
