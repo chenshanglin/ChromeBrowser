@@ -65,12 +65,12 @@ public class WebViewTestActivity extends Activity {
     private void initWebView(WebView view) {
     	view.getSettings().setJavaScriptEnabled(true);
         
-//    	view.setWebViewClient(new WebViewClient() {
-//            @Override
-//            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-//                return false;
-//            }
-//        });
+    	view.setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                return false;
+            }
+        });
     }
 
     private WebView createAwTestContainerView() {
