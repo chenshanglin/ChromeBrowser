@@ -498,7 +498,7 @@ public final class HawkBrowser extends Activity
     		}
     	} else {
     		Uri uri = intent.getData();
-    		if(uri.getScheme().startsWith("http")) {
+    		if((null != uri) && uri.getScheme().startsWith("http")) {
     			newWebView(uri.toString());
     		}
     	}

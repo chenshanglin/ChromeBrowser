@@ -62,6 +62,7 @@ public class WebViewTestActivity extends Activity {
     private WebView createAwTestContainerView() {
     	
         WebView testContainerView = new WebView(this);
+        testContainerView.getSettings().setJavaScriptEnabled(true);
         return testContainerView;
     }
 

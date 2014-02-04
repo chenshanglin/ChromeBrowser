@@ -133,17 +133,14 @@ public class WebView extends FrameLayout {
         if(null == mInternalAccessDelegate) {
         	mInternalAccessDelegate = new InternalAccessAdapter();
         }
-               
-        mAwContents = new AwContents(mBrowserContext, this,
-        		mInternalAccessDelegate, new NullContentsClient(),
-                false, new AwLayoutSizer(), true);
         
         mWebSettings = new ContentSettingsAdapter(new AwSettings(
                 getContext(), false, true));
-        
         mContentsClientAdapter = new WebViewContentsClientAdapter(this);
-        
-        // mAwContents.getSettings().setJavaScriptEnabled(true);
+               
+        mAwContents = new AwContents(mBrowserContext, this,
+        		mInternalAccessDelegate, mContentsClientAdapter,
+                new AwLayoutSizer(), mWebSettings.getAwSettings());
 	}
 	
 	public void loadUrl(String url) {
