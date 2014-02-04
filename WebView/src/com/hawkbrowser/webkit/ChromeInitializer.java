@@ -36,7 +36,8 @@ public class ChromeInitializer {
 
         AwResource.STRING_DEFAULT_TEXT_ENCODING = R.string.app_name;
 
-        CommandLine.initFromFile("/data/local/tmp/android-webview-command-line");
+        // CommandLine.initFromFile("/data/local/tmp/android-webview-command-line");
+        CommandLine.init(null);
 
         if (CommandLine.getInstance().hasSwitch(CommandLine.WAIT_FOR_JAVA_DEBUGGER)) {
            Log.e(TAG, "Waiting for Java debugger to connect...");

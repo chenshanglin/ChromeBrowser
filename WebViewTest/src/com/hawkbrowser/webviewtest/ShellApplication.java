@@ -4,7 +4,7 @@
 
 package com.hawkbrowser.webviewtest;
 
-import com.hawkbrowser.webkit.ChromeInitializer;
+// import com.hawkbrowser.webkit.ChromeInitializer;
 
 import android.app.Application;
 import android.content.Context;
@@ -17,6 +17,6 @@ public class ShellApplication extends Application {
     public void onCreate() {
         super.onCreate();
         
-        ChromeInitializer.initialize(getApplicationContext());
+        // ChromeInitializer.initialize(getApplicationContext());
     }
 }

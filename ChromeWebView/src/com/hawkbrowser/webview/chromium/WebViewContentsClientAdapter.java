@@ -33,7 +33,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.ConsoleMessage;
-import android.webkit.DownloadListener;
+import com.hawkbrowser.webkit.DownloadListener;
 import com.hawkbrowser.webkit.GeolocationPermissions;
 import com.hawkbrowser.webkit.JsDialogHelper;
 import com.hawkbrowser.webkit.JsPromptResult;

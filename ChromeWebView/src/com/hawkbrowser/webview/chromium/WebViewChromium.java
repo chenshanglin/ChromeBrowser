@@ -2145,6 +2145,6 @@ class WebViewChromium implements WebViewProvider,
 	public void setDownloadListener(
 			com.hawkbrowser.webkit.DownloadListener listener) {
 		// TODO Auto-generated method stub
-		
+		mContentsClientAdapter.setDownloadListener(listener);
 	}
 }

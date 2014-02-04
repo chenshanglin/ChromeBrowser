@@ -3,7 +3,7 @@ package com.hawkbrowser.shell;
 import java.io.File;
 
 import com.hawkbrowser.util.CommonUtil;
-import com.hawkbrowser.webkit.ChromeInitializer;
+// import com.hawkbrowser.webkit.ChromeInitializer;
 
 import android.app.Application;
 
@@ -20,7 +20,7 @@ public class HawkBrowserApplication extends Application {
 		// TODO Auto-generated method stub
 		super.onCreate();
 		
-		ChromeInitializer.initialize(getApplicationContext());
+		// ChromeInitializer.initialize(getApplicationContext());
 	}
 	
 	

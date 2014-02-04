@@ -27,7 +27,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
-import android.webkit.DownloadListener;
+import com.hawkbrowser.webkit.DownloadListener;
 import com.hawkbrowser.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -130,6 +130,8 @@ public final class HawkBrowser extends Activity
 		
 		String viewCount = String.format("%d", mViews.size());
 		mNavigationBar.setSelectWindowText(viewCount);
+		
+		newView.requestFocus();
 	}
 	
 	/* disable options menu

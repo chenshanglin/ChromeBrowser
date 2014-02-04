@@ -58,7 +58,7 @@ public class WebViewChromiumFactoryProvider implements WebViewFactoryProvider {
     private static final String COMMAND_LINE_FILE = "/data/local/tmp/webview-command-line";
     
     private static final String[] MANDATORY_PAKS = {
-        "webviewchromium.pak", "content_resources.pak", "en-US.pak"
+        "webviewchromium.pak"
     };
 
     // Guards accees to the other members, and is notifyAll() signalled on the UI thread
@@ -83,10 +83,7 @@ public class WebViewChromiumFactoryProvider implements WebViewFactoryProvider {
     private boolean mStarted;
 
     public WebViewChromiumFactoryProvider() {
-        // Load chromium library.
-        ResourceExtractor.setMandatoryPaksToExtract(MANDATORY_PAKS);
-        ResourceExtractor.setExtractImplicitLocaleForTesting(false);
-        
+        // Load chromium library.       
         AwBrowserProcess.loadLibrary();
         // Load glue-layer support library.
         // System.loadLibrary("webviewchromium_plat_support");
@@ -173,6 +170,8 @@ public class WebViewChromiumFactoryProvider implements WebViewFactoryProvider {
         // We don't need to extract any paks because for WebView, they are
         // in the system image.
         // ResourceExtractor.setMandatoryPaksToExtract("");
+        ResourceExtractor.setMandatoryPaksToExtract(MANDATORY_PAKS);
+        ResourceExtractor.setExtractImplicitLocaleForTesting(false);
 
         try {
             LibraryLoader.ensureInitialized();
@@ -180,6 +179,8 @@ public class WebViewChromiumFactoryProvider implements WebViewFactoryProvider {
             throw new RuntimeException("Error initializing WebView library", e);
         }
 
+        // removed by chenzhuo
+        /*
         PathService.override(PathService.DIR_MODULE, "/system/lib/");
         // TODO: DIR_RESOURCE_PAKS_ANDROID needs to live somewhere sensible,
         // inlined here for simplicity setting up the HTMLViewer demo. Unfortunately
@@ -188,6 +189,7 @@ public class WebViewChromiumFactoryProvider implements WebViewFactoryProvider {
         final int DIR_RESOURCE_PAKS_ANDROID = 3003;
         PathService.override(DIR_RESOURCE_PAKS_ANDROID,
                 "/system/framework/webview/paks");
+        */
 
         AwBrowserProcess.start(mApplicationContext);
         initPlatSupportLibrary();
