@@ -100,6 +100,11 @@ public final class HawkBrowser extends Activity
 		mAddressBar.setEventListener(new AddressBar.EventListener() {
 			@Override
 			public void onGo(String url) {
+				
+				if(!url.startsWith("http")) {
+					url = "http://" + url;
+				}
+				
 				mCurrentView.loadUrl(url);
 				mCurrentView.requestFocus();
 			}
