@@ -1811,8 +1811,7 @@ class WebViewChromium implements WebViewProvider,
 
     @Override
     public void onScrollChanged(int l, int t, int oldl, int oldt) {
-    	// add by chenzhuo
-    	mAwContents.onContainerViewScrollChanged(l, t, oldl, oldt);
+
     }
 
     @Override
