@@ -248,7 +248,7 @@ public class WebViewContentsClientAdapter extends AwContentsClient {
     @Override
     public void doUpdateVisitedHistory(String url, boolean isReload) {
         TraceEvent.begin();
-        // if (TRACE) Log.d(TAG, "doUpdateVisitedHistory=" + url + " reload=" + isReload);
+        if (TRACE) Log.d(TAG, "doUpdateVisitedHistory=" + url + " reload=" + isReload);
         mWebViewClient.doUpdateVisitedHistory(mWebView, url, isReload);
         TraceEvent.end();
     }
@@ -272,7 +272,7 @@ public class WebViewContentsClientAdapter extends AwContentsClient {
     @Override
     public InterceptedRequestData shouldInterceptRequest(String url) {
         TraceEvent.begin();
-        // if (TRACE) Log.d(TAG, "shouldInterceptRequest=" + url);
+        if (TRACE) Log.d(TAG, "shouldInterceptRequest=" + url);
         WebResourceResponse response = mWebViewClient.shouldInterceptRequest(mWebView, url);
         TraceEvent.end();
         if (response == null) return null;
@@ -313,7 +313,7 @@ public class WebViewContentsClientAdapter extends AwContentsClient {
         TraceEvent.begin();
         boolean result;
         if (mWebChromeClient != null) {
-            // if (TRACE) Log.d(TAG, "onConsoleMessage");
+            if (TRACE) Log.d(TAG, "onConsoleMessage");
             result = mWebChromeClient.onConsoleMessage(consoleMessage);
             String message = consoleMessage.message();
             if (result && message != null && message.startsWith("[blocked]")) {
@@ -354,7 +354,7 @@ public class WebViewContentsClientAdapter extends AwContentsClient {
     @Override
     public void onLoadResource(String url) {
         TraceEvent.begin();
-        // if (TRACE) Log.d(TAG, "onLoadResource=" + url);
+        if (TRACE) Log.d(TAG, "onLoadResource=" + url);
         mWebViewClient.onLoadResource(mWebView, url);
         TraceEvent.end();
     }
@@ -484,6 +484,7 @@ public class WebViewContentsClientAdapter extends AwContentsClient {
             // ErrorStrings is @hidden, so we can't do this in AwContents.
             // Normally the net/ layer will set a valid description, but for synthesized callbacks
             // (like in the case for intercepted requests) AwContents will pass in null.
+			// todo:
             // description = ErrorStrings.getString(errorCode, mWebView.getContext());
         }
         TraceEvent.begin();
@@ -788,19 +789,19 @@ public class WebViewContentsClientAdapter extends AwContentsClient {
                 result = mCachedDefaultVideoPoster.get();
             }
             if (result == null) {
+            	
+            	// todo:
             	throw new UnsupportedOperationException();
-            	/*
-                Bitmap poster = BitmapFactory.decodeResource(
-                        mWebView.getContext().getResources(),
-                        com.android.internal.R.drawable.ic_media_video_poster);
-                result = Bitmap.createBitmap(poster.getWidth(),
-                                             poster.getHeight(),
-                                             poster.getConfig());
-                result.eraseColor(Color.GRAY);
-                Canvas canvas = new Canvas(result);
-                canvas.drawBitmap(poster, 0f, 0f, null);
-                mCachedDefaultVideoPoster = new SoftReference<Bitmap>(result);
-                */
+//                Bitmap poster = BitmapFactory.decodeResource(
+//                        mWebView.getContext().getResources(),
+//                        com.android.internal.R.drawable.ic_media_video_poster);
+//                result = Bitmap.createBitmap(poster.getWidth(),
+//                                             poster.getHeight(),
+//                                             poster.getConfig());
+//                result.eraseColor(Color.GRAY);
+//                Canvas canvas = new Canvas(result);
+//                canvas.drawBitmap(poster, 0f, 0f, null);
+//                mCachedDefaultVideoPoster = new SoftReference<Bitmap>(result);
             }
         }
         TraceEvent.end();

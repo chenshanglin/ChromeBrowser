@@ -105,6 +105,19 @@ public class CookieManager {
     }
 
     /**
+     * Gets cookie(s) for a given uri so that it can be set to "cookie:" in http
+     * request header.
+     *
+     * @param uri the WebAddress for which the cookies are requested
+     * @return value the cookies as a string, using the format of the 'Cookie'
+     *               HTTP request header
+     * @hide Used by RequestHandle, no intention to publish.
+     */
+    public synchronized String getCookie(WebAddress uri) {
+        throw new MustOverrideException();
+    }
+
+    /**
      * Removes all session cookies, which are cookies without an expiration
      * date.
      */

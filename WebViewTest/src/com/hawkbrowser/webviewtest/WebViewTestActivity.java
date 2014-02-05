@@ -105,7 +105,12 @@ public class WebViewTestActivity extends Activity {
                     return false;
                 }
 
-                mAwTestContainerView.loadUrl(mUrlTextView.getText().toString());
+                String url = mUrlTextView.getText().toString();
+                if(!url.startsWith("http")) {
+                	url = "http://" + url;
+                }
+                
+                mAwTestContainerView.loadUrl(url);
                 mUrlTextView.clearFocus();
                 setKeyboardVisibilityForUrl(false);
                 mAwTestContainerView.requestFocus();

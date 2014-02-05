@@ -16,9 +16,10 @@
 
 package com.hawkbrowser.webview.chromium;
 
-import android.net.ParseException;
+import java.text.ParseException;
 import android.util.Log;
 import com.hawkbrowser.webkit.CookieManager;
+import com.hawkbrowser.webkit.WebAddress;
 
 import org.chromium.android_webview.AwCookieManager;
 
@@ -67,6 +68,11 @@ public class CookieManagerAdapter extends CookieManager {
     }
 
     @Override
+    public synchronized String getCookie(WebAddress uri) {
+        return mChromeCookieManager.getCookie(uri.toString());
+    }
+
+    @Override
     public void removeSessionCookie() {
         mChromeCookieManager.removeSessionCookie();
     }
@@ -111,9 +117,7 @@ public class CookieManagerAdapter extends CookieManager {
         // of the Classic WebView implementation that allowed embedders to
         // be relaxed about what URLs they passed into the CookieManager, so we
         // do the same normalisation before entering the chromium stack.
-    	// todo:
-    	return url;
-        // return new WebAddress(url).toString();
+        return new WebAddress(url).toString();
     }
 
 }

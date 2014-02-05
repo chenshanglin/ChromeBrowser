@@ -48,6 +48,8 @@ import com.hawkbrowser.webview.R;
 //import android.webkit.FindActionModeCallback;
 import com.hawkbrowser.webkit.JavascriptInterface;
 import android.webkit.ValueCallback;
+
+import com.hawkbrowser.webkit.FindActionModeCallback;
 import com.hawkbrowser.webkit.WebBackForwardList;
 import com.hawkbrowser.webkit.WebChromeClient;
 import com.hawkbrowser.webkit.WebSettings;
@@ -841,6 +843,7 @@ class WebViewChromium implements WebViewProvider,
     @Override
     public PrintDocumentAdapter createPrintDocumentAdapter() {
         checkThread();
+		// todo:
         throw new UnsupportedOperationException();
         // return new AwPrintDocumentAdapter(mAwContents.getPdfExporter());
     }
@@ -1210,12 +1213,10 @@ class WebViewChromium implements WebViewProvider,
             return false;
         }
 
-        /* todo:
         FindActionModeCallback findAction = new FindActionModeCallback(mWebView.getContext());
         if (findAction == null) {
             return false;
         }
-        
 
         mWebView.startActionMode(findAction);
         findAction.setWebView(mWebView);
@@ -1227,7 +1228,6 @@ class WebViewChromium implements WebViewProvider,
             findAction.setText(text);
             findAction.findAll();
         }
-        */
 
         return true;
     }
@@ -1277,6 +1277,11 @@ class WebViewChromium implements WebViewProvider,
     @Override
     public void setWebViewClient(WebViewClient client) {
         mContentsClientAdapter.setWebViewClient(client);
+    }
+
+    @Override
+    public void setDownloadListener(com.hawkbrowser.webkit.DownloadListener listener) {
+        mContentsClientAdapter.setDownloadListener(listener);
     }
 
     @Override
@@ -1521,9 +1526,7 @@ class WebViewChromium implements WebViewProvider,
         if (mAwContents.supportsAccessibilityAction(action)) {
             return mAwContents.performAccessibilityAction(action, arguments);
         }
-        
-        throw new UnsupportedOperationException();
-        // return mWebViewPrivate.super_performAccessibilityAction(action, arguments);
+        return mWebViewPrivate.super_performAccessibilityAction(action, arguments);
     }
 
     @Override
@@ -1566,9 +1569,7 @@ class WebViewChromium implements WebViewProvider,
         // WebViewClassic was overriding this method to handle rubberband over-scroll. Since
         // WebViewChromium doesn't support that the vanilla implementation of this method can be
         // used.
-    	
-    	throw new UnsupportedOperationException();
-        // mWebViewPrivate.super_onDrawVerticalScrollBar(canvas, scrollBar, l, t, r, b);
+        mWebViewPrivate.super_onDrawVerticalScrollBar(canvas, scrollBar, l, t, r, b);
     }
 
     @Override
@@ -1791,8 +1792,7 @@ class WebViewChromium implements WebViewProvider,
 
     @Override
     public boolean setFrame(final int left, final int top, final int right, final int bottom) {
-    	throw new UnsupportedOperationException();
-        // return mWebViewPrivate.super_setFrame(left, top, right, bottom);
+        return mWebViewPrivate.super_setFrame(left, top, right, bottom);
     }
 
     @Override
@@ -1811,6 +1811,8 @@ class WebViewChromium implements WebViewProvider,
 
     @Override
     public void onScrollChanged(int l, int t, int oldl, int oldt) {
+    	// add by chenzhuo
+    	mAwContents.onContainerViewScrollChanged(l, t, oldl, oldt);
     }
 
     @Override
@@ -2049,9 +2051,8 @@ class WebViewChromium implements WebViewProvider,
     private class InternalAccessAdapter implements AwContents.InternalAccessDelegate {
         @Override
         public boolean drawChild(Canvas arg0, View arg1, long arg2) {
-            // UnimplementedWebViewApi.invoke();
-            // return false;
-        	return mWebViewPrivate.super_drawChild(arg0, arg1, arg2);
+            UnimplementedWebViewApi.invoke();
+            return false;
         }
 
         @Override
@@ -2102,8 +2103,8 @@ class WebViewChromium implements WebViewProvider,
 
         @Override
         public void onScrollChanged(int l, int t, int oldl, int oldt) {
-            // mWebViewPrivate.setScrollXRaw(l);
-            // mWebViewPrivate.setScrollYRaw(t);
+            mWebViewPrivate.setScrollXRaw(l);
+            mWebViewPrivate.setScrollYRaw(t);
             mWebViewPrivate.onScrollChanged(l, t, oldl, oldt);
         }
 
@@ -2140,11 +2141,4 @@ class WebViewChromium implements WebViewProvider,
             */
         }
     }
-
-	@Override
-	public void setDownloadListener(
-			com.hawkbrowser.webkit.DownloadListener listener) {
-		// TODO Auto-generated method stub
-		mContentsClientAdapter.setDownloadListener(listener);
-	}
 }

@@ -46,6 +46,7 @@ import android.view.accessibility.AccessibilityNodeInfo;
 import android.view.accessibility.AccessibilityNodeProvider;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
+import android.widget.AbsoluteLayout;
 import android.widget.FrameLayout;
 import android.webkit.ValueCallback;
 
@@ -1876,9 +1877,6 @@ public class WebView extends FrameLayout
      */
     public class PrivateAccess {
         // ---- Access to super-class methods ----
-    	public boolean super_drawChild(Canvas canvas, View child, long drawingTime) {
-    		return WebView.super.drawChild(canvas, child, drawingTime);
-    	}
         public int super_getScrollBarStyle() {
             return WebView.super.getScrollBarStyle();
         }
@@ -1895,8 +1893,20 @@ public class WebView extends FrameLayout
             return WebView.super.onHoverEvent(event);
         }
 
+		public boolean super_performAccessibilityAction(int action, Bundle arguments) {
+			// todo:
+			throw new MustOverrideException();
+            // return WebView.super.performAccessibilityAction(action, arguments);
+        }
+
         public boolean super_performLongClick() {
             return WebView.super.performLongClick();
+        }
+
+        public boolean super_setFrame(int left, int top, int right, int bottom) {
+			// todo:
+			throw new MustOverrideException();
+            // return WebView.super.setFrame(left, top, right, bottom);
         }
 
         public boolean super_dispatchKeyEvent(KeyEvent event) {
@@ -1933,6 +1943,18 @@ public class WebView extends FrameLayout
             WebView.this.awakenScrollBars(duration, invalidate);
         }
 
+        public float getVerticalScrollFactor() {
+			// todo:
+			throw new MustOverrideException();
+            // return WebView.this.getVerticalScrollFactor();
+        }
+
+        public float getHorizontalScrollFactor() {
+			// todo:
+			throw new MustOverrideException();
+            // return WebView.this.getHorizontalScrollFactor();
+        }
+
         public void setMeasuredDimension(int measuredWidth, int measuredHeight) {
             WebView.this.setMeasuredDimension(measuredWidth, measuredHeight);
         }
@@ -1944,6 +1966,29 @@ public class WebView extends FrameLayout
         public int getHorizontalScrollbarHeight() {
             return WebView.this.getHorizontalScrollbarHeight();
         }
+
+        public void super_onDrawVerticalScrollBar(Canvas canvas, Drawable scrollBar,
+                int l, int t, int r, int b) {
+			// todo:
+			throw new MustOverrideException();
+            // WebView.super.onDrawVerticalScrollBar(canvas, scrollBar, l, t, r, b);
+        }
+
+        // ---- Access to (non-public) fields ----
+        /** Raw setter for the scroll X value, without invoking onScrollChanged handlers etc. */
+        public void setScrollXRaw(int scrollX) {
+			// todo:
+        	WebView.this.setScrollX(scrollX);
+            // WebView.this.mScrollX = scrollX;
+        }
+
+        /** Raw setter for the scroll Y value, without invoking onScrollChanged handlers etc. */
+        public void setScrollYRaw(int scrollY) {
+			// todo:
+			WebView.this.setScrollY(scrollY);
+            // WebView.this.mScrollY = scrollY;
+        }
+
     }
 
     //-------------------------------------------------------------------------
@@ -2028,6 +2073,8 @@ public class WebView extends FrameLayout
                     "(Expected Looper " + mWebViewThread + " called on " + Looper.myLooper() +
                     ", FYI main Looper is " + Looper.getMainLooper() + ")");
             Log.w(LOGTAG, Log.getStackTraceString(throwable));
+            
+            // todo:
             // StrictMode.onWebViewMethodCalledOnWrongThread(throwable);
 
             if (sEnforceThreadChecking) {
@@ -2158,6 +2205,15 @@ public class WebView extends FrameLayout
     }
     */
 
+    @Override
+    public AccessibilityNodeProvider getAccessibilityNodeProvider() {
+		// todo:
+		throw new MustOverrideException();
+//        AccessibilityNodeProvider provider =
+//                mProvider.getViewDelegate().getAccessibilityNodeProvider();
+//        return provider == null ? super.getAccessibilityNodeProvider() : provider;
+    }
+
     @Deprecated
     @Override
     public boolean shouldDelayChildPressedState() {
@@ -2181,6 +2237,14 @@ public class WebView extends FrameLayout
     @Override
     public boolean performAccessibilityAction(int action, Bundle arguments) {
         return mProvider.getViewDelegate().performAccessibilityAction(action, arguments);
+    }
+
+    /** @hide */
+    // todo:
+    // @Override
+    protected void onDrawVerticalScrollBar(Canvas canvas, Drawable scrollBar,
+            int l, int t, int r, int b) {
+        mProvider.getViewDelegate().onDrawVerticalScrollBar(canvas, scrollBar, l, t, r, b);
     }
 
     @Override
@@ -2235,6 +2299,13 @@ public class WebView extends FrameLayout
         mProvider.getViewDelegate().onFocusChanged(focused, direction, previouslyFocusedRect);
         super.onFocusChanged(focused, direction, previouslyFocusedRect);
     }
+
+    /** @hide */
+    // todo:
+    // @Override
+//    protected boolean setFrame(int left, int top, int right, int bottom) {
+//        return mProvider.getViewDelegate().setFrame(left, top, right, bottom);
+//    }
 
     @Override
     protected void onSizeChanged(int w, int h, int ow, int oh) {
