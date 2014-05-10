@@ -21,9 +21,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 
-import com.hawkbrowser.webkit.WebChromeClient;
-import com.hawkbrowser.webkit.WebView;
-import com.hawkbrowser.webkit.WebViewClient;
+import android.webkit.WebChromeClient;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 public class WebViewTestActivity extends Activity {
 

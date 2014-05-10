@@ -1,0 +1,8 @@
+<resources>
+
+    <string name="app_name">ChromeWebView</string>
+    <string name="ok">ok</string>
+    <string name="webviewchromium_private_browsing_warning">Chromium WebView Warning</string>
+    <string name="webviewtest">Chrome WebView Test</string>
+
+</resources>

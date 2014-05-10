@@ -321,6 +321,7 @@ public final class HawkBrowser extends Activity
 		mAddressBar.setTitle(view.getUrl());
 		setBackForwardState(view);
 		addHistory(view, url);
+		view.scrollTo(0, 0);
 	}
 	
 	private void addHistory(WebView view, String url) {		

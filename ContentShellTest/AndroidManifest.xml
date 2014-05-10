@@ -1,0 +1,110 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.hawkbrowser"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="19" />
+    
+    <permission android:name="org.chromium.content_shell.permission.SANDBOX"
+        android:protectionLevel="signature" />
+    
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <application
+        android:name="com.hawkbrowser.shell.TestApplication"
+        android:allowBackup="true"
+        android:debuggable="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name" >
+        
+        <activity android:name="com.hawkbrowser.shell.MainActivity"
+          android:launchMode="singleTask"
+          android:theme="@android:style/Theme.Holo.Light.NoActionBar"
+          android:configChanges="orientation|keyboardHidden|keyboard|screenSize"
+          android:hardwareAccelerated="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        
+		<!-- NOTE: If you change the values of "android:process" for any of the below services,
+             you also need to update kHelperProcessExecutableName in chrome_constants.cc. -->
+        <service android:name="org.chromium.content.app.SandboxedProcessService0"
+                 android:process=":sandboxed_process0"
+                 android:isolatedProcess="true"
+                 android:permission="org.chromium.content_shell.permission.SANDBOX"
+                 android:exported="false" />
+        <service android:name="org.chromium.content.app.SandboxedProcessService1"
+                 android:process=":sandboxed_process1"
+                 android:isolatedProcess="true"
+                 android:permission="org.chromium.content_shell.permission.SANDBOX"
+                 android:exported="false" />
+        <service android:name="org.chromium.content.app.SandboxedProcessService2"
+                 android:process=":sandboxed_process2"
+                 android:isolatedProcess="true"
+                 android:permission="org.chromium.content_shell.permission.SANDBOX"
+                 android:exported="false" />
+        <service android:name="org.chromium.content.app.SandboxedProcessService3"
+                 android:process=":sandboxed_process3"
+                 android:isolatedProcess="true"
+                 android:permission="org.chromium.content_shell.permission.SANDBOX"
+                 android:exported="false" />
+        <service android:name="org.chromium.content.app.SandboxedProcessService4"
+                 android:process=":sandboxed_process4"
+                 android:isolatedProcess="true"
+                 android:permission="org.chromium.content_shell.permission.SANDBOX"
+                 android:exported="false" />
+        <service android:name="org.chromium.content.app.SandboxedProcessService5"
+                 android:process=":sandboxed_process5"
+                 android:isolatedProcess="true"
+                 android:permission="org.chromium.content_shell.permission.SANDBOX"
+                 android:exported="false" />
+        <service android:name="org.chromium.content.app.SandboxedProcessService6"
+                 android:process=":sandboxed_process6"
+                 android:isolatedProcess="true"
+                 android:permission="org.chromium.content_shell.permission.SANDBOX"
+                 android:exported="false" />
+        <service android:name="org.chromium.content.app.SandboxedProcessService7"
+                 android:process=":sandboxed_process7"
+                 android:isolatedProcess="true"
+                 android:permission="org.chromium.content_shell.permission.SANDBOX"
+                 android:exported="false" />
+        <service android:name="org.chromium.content.app.SandboxedProcessService8"
+                 android:process=":sandboxed_process8"
+                 android:isolatedProcess="true"
+                 android:permission="org.chromium.content_shell.permission.SANDBOX"
+                 android:exported="false" />
+        <service android:name="org.chromium.content.app.SandboxedProcessService9"
+                 android:process=":sandboxed_process9"
+                 android:isolatedProcess="true"
+                 android:permission="org.chromium.content_shell.permission.SANDBOX"
+                 android:exported="false" />
+        <service android:name="org.chromium.content.app.SandboxedProcessService10"
+                 android:process=":sandboxed_process10"
+                 android:isolatedProcess="true"
+                 android:permission="org.chromium.content_shell.permission.SANDBOX"
+                 android:exported="false" />
+        <service android:name="org.chromium.content.app.SandboxedProcessService11"
+                 android:process=":sandboxed_process11"
+                 android:isolatedProcess="true"
+                 android:permission="org.chromium.content_shell.permission.SANDBOX"
+                 android:exported="false" />
+        <service android:name="org.chromium.content.app.SandboxedProcessService12"
+                 android:process=":sandboxed_process12"
+                 android:isolatedProcess="true"
+                 android:permission="org.chromium.content_shell.permission.SANDBOX"
+                 android:exported="false" />
+    </application>
+    
+</manifest>

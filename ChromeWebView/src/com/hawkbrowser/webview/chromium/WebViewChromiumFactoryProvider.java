@@ -46,7 +46,7 @@ import org.chromium.content.app.ContentMain;
 import org.chromium.content.app.LibraryLoader;
 import org.chromium.content.browser.ContentViewStatics;
 import org.chromium.content.browser.ResourceExtractor;
-import org.chromium.content.common.CommandLine;
+import org.chromium.base.CommandLine;
 import org.chromium.content.common.ProcessInitException;
 
 import java.lang.ref.WeakReference;

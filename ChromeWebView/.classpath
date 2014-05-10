@@ -4,7 +4,7 @@
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
 	<classpathentry exported="true" kind="lib" path="libs/base_java.jar"/>
-	<classpathentry exported="true" kind="lib" path="libs/content_java.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/content_java.jar" sourcepath="E:/code/chrome_android/chromium/src"/>
 	<classpathentry exported="true" kind="lib" path="libs/eyesfree_java.jar"/>
 	<classpathentry exported="true" kind="lib" path="libs/guava_javalib.jar"/>
 	<classpathentry exported="true" kind="lib" path="libs/jsr_305_javalib.jar"/>

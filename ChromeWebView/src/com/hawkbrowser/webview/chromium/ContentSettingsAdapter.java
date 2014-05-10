@@ -18,7 +18,7 @@ package com.hawkbrowser.webview.chromium;
 
 import android.util.Log;
 import android.webkit.WebSettings.LayoutAlgorithm;
-import android.webkit.WebSettings.PluginState;
+import com.hawkbrowser.webkit.WebSettings.PluginState;
 import android.webkit.WebSettings.RenderPriority;
 import android.webkit.WebSettings.TextSize;
 import android.webkit.WebSettings.ZoomDensity;
