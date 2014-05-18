@@ -15,12 +15,5 @@ public class TestApplication extends Application {
 	public void onCreate() {
 		// TODO Auto-generated method stub
 		super.onCreate();
-		
-		try {
-			ChromeInitializer.get().initialize();
-		} catch(ProcessInitException e) {
-			Log.e(TAG, e.getMessage());
-			System.exit(0);
-		}
 	}
 }

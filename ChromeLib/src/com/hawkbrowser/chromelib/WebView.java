@@ -1,12 +1,11 @@
 package com.hawkbrowser.chromelib;
 
+import org.chromium.chrome.hawkbrowser.HawkBrowserTab;
 import org.chromium.content.browser.ActivityContentVideoViewClient;
 import org.chromium.content.browser.ContentVideoViewClient;
 import org.chromium.content.browser.ContentView;
 import org.chromium.content.browser.ContentViewClient;
 import org.chromium.content.common.ProcessInitException;
-import org.chromium.ui.base.ActivityWindowAndroid;
-import org.chromium.ui.base.WindowAndroid;
 
 import android.app.Activity;
 import android.content.Context;
@@ -15,8 +14,10 @@ import android.widget.FrameLayout;
 
 public class WebView extends FrameLayout {
 	
+	private static final String TAG = "ChromeLib";
+	
 	private TabManager mTabManager;
-    private WindowAndroid mWindowAndroid;
+	private HawkBrowserTab mTab;
     private String mPendingLoadUrl;
     
     public WebView(Context context, AttributeSet attrs) {
@@ -26,13 +27,19 @@ public class WebView extends FrameLayout {
 
     public void loadUrl(String url) throws ProcessInitException {
     	
-		if(ChromeInitializer.get().isChromeStartFinished())
+    	final ChromeInitializer chromeInitializer = ChromeInitializer.get();
+    	
+    	if(!chromeInitializer.isInitialized()) {
+    		chromeInitializer.initialize();
+    	}
+    	
+		if(chromeInitializer.isChromeStartFinished())
 			loadUrlAfterChromeStart(url);
 		else {
 			
 			mPendingLoadUrl = url;
 			
-        	ChromeInitializer.get().setCallback(new ChromeInitializer.InitializeCallback() {
+			chromeInitializer.setCallback(new ChromeInitializer.InitializeCallback() {
 				
 				@Override
 				public void onSuccess(boolean alreadyStarted) {
@@ -47,22 +54,13 @@ public class WebView extends FrameLayout {
 				}
 			});
         	
-        	ChromeInitializer.get().startChrome(getContext());
+			chromeInitializer.startChrome(getContext());
 		}
     }
 	
 	private void initAfterChromeStart() {
-		    	
-    	mTabManager = new TabManager(getContext(), null);
-    	mTabManager.setStartupUrl(mPendingLoadUrl);
-    	mTabManager.setLayoutParams(new FrameLayout.LayoutParams(
-                FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT));
-    	
-        mWindowAndroid = getContext() instanceof Activity ?
-        		new ActivityWindowAndroid((Activity)getContext()) : 
-        			new WindowAndroid(getContext());
-        mTabManager.setWindow(mWindowAndroid);
-        
+		
+    	mTabManager = TabManager.get(getContext());        
         addView(mTabManager, new FrameLayout.LayoutParams(
         	FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT));
 	}
@@ -72,7 +70,9 @@ public class WebView extends FrameLayout {
 		if(mTabManager.getCurrentTab() != null) 
 			mTabManager.getCurrentTab().loadUrlWithSanitization(url);
 		else {
-			mTabManager.createTab(url);
+			mTab = mTabManager.createTab(url);
+			
+			assert mTab != null;
 			
 			final Activity hostActivity = getContext() instanceof Activity ? 
 					(Activity) getContext() : null;
@@ -89,40 +89,48 @@ public class WebView extends FrameLayout {
 	}
 		
 	public String getUrl() {
-		if(null == mTabManager.getCurrentTab())
+		if(null == mTab)
 			return "";
 		else
-			return mTabManager.getCurrentTab().getContentView().getUrl();
+			return mTab.getContentView().getUrl();
 	}
 	
 	public boolean canGoBack() {
-		if(null == mTabManager.getCurrentTab())
+		if(null == mTab)
 			return false;
 		else
-			return mTabManager.getCurrentTab().getContentView().canGoBack();
+			return mTab.getContentView().canGoBack();
 	}
 	
 	public boolean canGoForward() {
-		if(null == mTabManager.getCurrentTab())
+		if(null == mTab)
 			return false;
 		else
-			return mTabManager.getCurrentTab().getContentView().canGoForward();
+			return mTab.getContentView().canGoForward();
 	}
 	
 	public void goBack() {
-		if(null != mTabManager.getCurrentTab())
-			mTabManager.getCurrentTab().getContentView().goBack();
+		if(null != mTab)
+			mTab.getContentView().goBack();
 	}
 
 	public void goForward() {
-		if(null != mTabManager.getCurrentTab())
-			mTabManager.getCurrentTab().getContentView().goForward();
+		if(null != mTab)
+			mTab.getContentView().goForward();
 	}
 
 	public ContentView getContentView() {
-		if(null != mTabManager.getCurrentTab())
-			return mTabManager.getCurrentTab().getContentView();
+		if(null != mTab)
+			return mTab.getContentView();
 		else
 			return null;
+	}
+	
+	public void destroy() {
+		
+		if(null != mTab) {
+			TabManager.get(getContext()).destroyTab(mTab);
+			mTab = null;
+		}
 	}
 }

@@ -26,11 +26,12 @@ public class MainActivity extends Activity {
 	private static final String TAG = "ContentShellTest";
 	
     private final static String INITIAL_URL = "http://www.baidu.com";
-    private WebView mAwTestContainerView;
+    private WebView mWebView;
     private EditText mUrlTextView;
     private ImageButton mPrevButton;
     private ImageButton mNextButton;
     private String mStartupUrl;
+    private long mPreviousBackKeyUpTime = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -46,10 +47,10 @@ public class MainActivity extends Activity {
         	mStartupUrl = INITIAL_URL;
         }
                                            
-    	mAwTestContainerView = (WebView) findViewById(R.id.web_view);     
+    	mWebView = (WebView) findViewById(R.id.web_view);     
     	
     	try {
-    		mAwTestContainerView.loadUrl(mStartupUrl);
+    		mWebView.loadUrl(mStartupUrl);
     	} catch (ProcessInitException e) {
             Log.e(TAG, "Failed to load native library.", e);
             System.exit(-1);
@@ -89,7 +90,7 @@ public class MainActivity extends Activity {
                 }
                 
             	try {
-            		mAwTestContainerView.loadUrl(url);
+            		mWebView.loadUrl(url);
             	} catch (ProcessInitException e) {
                     Log.e(TAG, "Failed to load native library.", e);
                     System.exit(-1);
@@ -97,7 +98,7 @@ public class MainActivity extends Activity {
             	
                 mUrlTextView.clearFocus();
                 setKeyboardVisibilityForUrl(false);
-                mAwTestContainerView.requestFocus();
+                mWebView.requestFocus();
                 return true;
             }
         });
@@ -108,7 +109,7 @@ public class MainActivity extends Activity {
                 mNextButton.setVisibility(hasFocus ? View.GONE : View.VISIBLE);
                 mPrevButton.setVisibility(hasFocus ? View.GONE : View.VISIBLE);
                 if (!hasFocus) {
-                    mUrlTextView.setText(mAwTestContainerView.getUrl());
+                    mUrlTextView.setText(mWebView.getUrl());
                 }
             }
         });
@@ -119,8 +120,8 @@ public class MainActivity extends Activity {
         mPrevButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mAwTestContainerView.canGoBack()) {
-                    mAwTestContainerView.goBack();
+                if (mWebView.canGoBack()) {
+                    mWebView.goBack();
                 }
             }
         });
@@ -129,11 +130,36 @@ public class MainActivity extends Activity {
         mNextButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mAwTestContainerView.canGoForward()) {
-                        mAwTestContainerView.goForward();
+                if (mWebView.canGoForward()) {
+                        mWebView.goForward();
                 }
             }
         });
     }
 
+	@Override
+	public boolean onKeyUp(int keyCode, KeyEvent event) {
+		// TODO Auto-generated method stub
+		if(keyCode == KeyEvent.KEYCODE_BACK) {
+			if(mWebView.canGoBack()) {
+				mWebView.goBack();
+				return true;
+			} else {
+				
+				long currentMillSeconds = System.currentTimeMillis();
+				if(currentMillSeconds - mPreviousBackKeyUpTime > 1500) {
+					mWebView.destroy();
+					mWebView = null;
+					finish();
+					return true;
+				} else {
+					mPreviousBackKeyUpTime = currentMillSeconds;
+				}
+			}
+		}
+		
+		return super.onKeyUp(keyCode, event);
+	}
+
+    
 }
