@@ -101,6 +101,14 @@ public class ChromeInitializer {
 		mIsStart = true;
 		
         try {
+        	
+        	// single process mode
+//        	BrowserStartupController.get(context).startBrowserProcessesSync(
+//                    BrowserStartupController.MAX_RENDERERS_SINGLE_PROCESS);
+//        	
+//        	mIsStartFinished = true;
+        	// 
+        	// multiple process mode
             BrowserStartupController.get(context).startBrowserProcessesAsync(
                 new BrowserStartupController.StartupCallback() {
                     @Override
