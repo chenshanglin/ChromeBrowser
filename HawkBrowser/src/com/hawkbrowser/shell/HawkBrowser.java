@@ -77,7 +77,7 @@ public final class HawkBrowser extends Activity
 		String homePage = getResources().getString(R.string.homepageurl);
 
 		Uri uri = getIntent().getData();
-		if((null != uri) && uri.getScheme().startsWith("http")) {
+		if(null != uri) {
 			homePage = uri.toString().toString();
 		}
 		
@@ -103,11 +103,7 @@ public final class HawkBrowser extends Activity
 		mAddressBar.setEventListener(new AddressBar.EventListener() {
 			@Override
 			public void onGo(String url) {
-				
-				if(!url.startsWith("http://") && !url.startsWith("chrome://")) {
-					url = "http://" + url;
-				}
-				
+								
 				mCurrentView.loadUrl(url);
 				mCurrentView.requestFocus();
 			}
@@ -217,7 +213,13 @@ public final class HawkBrowser extends Activity
 			}
 			
 			titles.add(title);	
-			Bitmap webBmp = ImageUtil.loadBitmapFromView(wv);
+			
+			Bitmap webBmp = Bitmap.createBitmap(wv.getWidth(), wv.getHeight(),
+                    Bitmap.Config.ARGB_8888);
+			
+			// Bitmap webBmp = ImageUtil.loadBitmapFromView(wv);
+			wv.drawToBitmap(webBmp);
+			
 			bitmaps.add(webBmp);
 		}
 		

@@ -108,7 +108,7 @@ public class WebViewSelecter implements View.OnTouchListener {
     	
 		ViewGroup webThumbContainer = (ViewGroup) 
 				inflater.inflate(R.layout.select_webview, null);
-		webThumbContainer.getBackground().setAlpha(125);
+		webThumbContainer.getBackground().setAlpha(175);
 				
 		for(int i = 0; i < webThumbContainer.getChildCount(); ++i) {
 
@@ -194,7 +194,7 @@ public class WebViewSelecter implements View.OnTouchListener {
     public void show(View anchor) {
     	if(null == mPopup) {
     		Point screenSize = CommonUtil.screenSize(mContext);
-    		mPopup = new PopupWindow(mView, screenSize.x, 200);
+    		mPopup = new PopupWindow(mView, screenSize.x, screenSize.y / 4);
     		mPopup.showAsDropDown(anchor, 0, 0);
     	}
     }
@@ -202,6 +202,12 @@ public class WebViewSelecter implements View.OnTouchListener {
     public void dismiss() {
     	if(null != mPopup) {
     		mPopup.dismiss();
+    		
+    		for(Bitmap bitmap : mBitmaps) {
+    			bitmap.recycle();
+    		}
+    		
+    		mBitmaps.clear();
     		mPopup = null;
     	}
     }
