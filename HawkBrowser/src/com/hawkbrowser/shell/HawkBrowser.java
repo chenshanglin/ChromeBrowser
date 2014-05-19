@@ -16,9 +16,11 @@ import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -59,6 +61,7 @@ public final class HawkBrowser extends Activity
 	private PopMenuBar				mPopMenuBar;
 	private static History			mHistory;
 	private static DownloadManager	mDownloadMgr;
+	private long					mPrevBackKeyUpTime;
 		
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -101,7 +104,7 @@ public final class HawkBrowser extends Activity
 			@Override
 			public void onGo(String url) {
 				
-				if(!url.startsWith("http")) {
+				if(!url.startsWith("http://") && !url.startsWith("chrome://")) {
 					url = "http://" + url;
 				}
 				
@@ -379,12 +382,49 @@ public final class HawkBrowser extends Activity
 	
 	@Override
 	public void onQuit() {
-		mPopMenuBar.dismiss();
-		mPopMenuBar = null;
+		
+		if(null != mPopMenuBar) {
+			mPopMenuBar.dismiss();
+			mPopMenuBar = null;
+		}
+		
+		for(HawkWebView view : mViews) {
+			view.destroy();
+		}
+		
+		mViews.clear();
 		
 		finish();
+		
+		System.exit(0);
 	}
 	
+	
+	
+	@Override
+	public boolean onKeyUp(int keyCode, KeyEvent event) {
+		// TODO Auto-generated method stub
+		if(keyCode == KeyEvent.KEYCODE_BACK) {
+			long time = System.currentTimeMillis();
+			if(mPrevBackKeyUpTime == 0 || time - mPrevBackKeyUpTime < 1500) {
+				mPrevBackKeyUpTime = time;
+			} else {
+				
+				new Handler().post(new Runnable() {
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						onQuit();
+					}
+				});
+			}
+			
+			return true;
+		}
+		
+		return super.onKeyUp(keyCode, event);
+	}
+
 	public void onRefresh() {
 		mPopMenuBar.dismiss();
 		mPopMenuBar = null;
