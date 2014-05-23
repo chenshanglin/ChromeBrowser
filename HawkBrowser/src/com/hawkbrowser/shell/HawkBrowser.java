@@ -67,36 +67,15 @@ public final class HawkBrowser extends Activity
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		// requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.main_frame);
-		
-		// LayoutInflater layoutInflater = 
-		//		(LayoutInflater) getLayoutInflater();
-		// View navigationBar = layoutInflater.inflate(R.layout.main_frame, null);
-		
-		String homePage = getResources().getString(R.string.homepageurl);
-
-		Uri uri = getIntent().getData();
-		if(null != uri) {
-			homePage = uri.toString().toString();
-		}
 		
 		mViews = new ArrayList<HawkWebView>();
 		
 		ViewGroup navigationBar = 
 				(ViewGroup)findViewById(R.id.mainframe_navigationbar);
 		mNavigationBar = new NavigationBar(this, navigationBar, this);
-		
-		HawkWebView newView = (HawkWebView) findViewById(R.id.mainframe_webView);
-		mWebViewLayoutParams = newView.getLayoutParams();
-		ViewGroup layout = (ViewGroup) findViewById(R.id.main_frame);
-		mIndexOfWebView = layout.indexOfChild(newView);
-		newView.init(new HawkWebViewClient(this), 
-			new HawkWebChromeClient(this));
-		newView.setDownloadListener(this);
-		newView.loadUrl(homePage);
-		showView(newView);
-				
+						
 		ViewGroup addressBarView = (ViewGroup) 
 				findViewById(R.id.mainframe_addressbar);
 		mAddressBar = new AddressBar(this, addressBarView);
@@ -110,20 +89,63 @@ public final class HawkBrowser extends Activity
 		});		
 		
 		mProgressBar = (ProgressBar) findViewById(R.id.mainframe_progressbar);
+		
+		new Handler().post(new Runnable() {
+			@Override
+			public void run() {
+				delayLoadWebView();
+			}
+		});
+	}
+	
+	private void delayLoadWebView() {
+		
+		String homePage = getResources().getString(R.string.homepageurl);
+
+		Uri uri = getIntent().getData();
+		if(null != uri) {
+			homePage = uri.toString().toString();
+		}
+		
+		HawkWebView newView = (HawkWebView) findViewById(R.id.mainframe_webView);
+		mWebViewLayoutParams = newView.getLayoutParams();
+		ViewGroup layout = (ViewGroup) findViewById(R.id.main_frame);
+		mIndexOfWebView = layout.indexOfChild(newView);
+		newView.init(new HawkWebViewClient(this), 
+			new HawkWebChromeClient(this));
+		newView.setDownloadListener(this);
+		newView.loadUrl(homePage);
+		showView(newView);
+	}
+	
+	private void updateViewThumbnail(HawkWebView view) {
+		
+		if(null == view)
+			return;
+		
+		Bitmap oldBitmap = (Bitmap) view.getTag();
+		
+		if(null != oldBitmap)
+			oldBitmap.recycle();
+		
+		Bitmap thumbnail = view.drawToBitmap();
+		view.setTag(thumbnail);
 	}
 	
 	private void showView(HawkWebView newView) {
-		mCurrentView = newView;
-		ViewGroup layout = (ViewGroup) findViewById(R.id.main_frame);
-		View curView = layout.findViewById(R.id.mainframe_webView);
-		
-		if(curView != newView) {
-			layout.removeView(curView);
-			// curView.setVisibility(View.INVISIBLE);
+				
+		if(null != mCurrentView && mCurrentView != newView) {
+			
+			updateViewThumbnail(mCurrentView);		
+			ViewGroup layout = (ViewGroup) findViewById(R.id.main_frame);
+//			View curView = layout.findViewById(R.id.mainframe_webView);
+			
+			layout.removeView(mCurrentView);
+			mCurrentView.setVisibility(View.INVISIBLE); 
 			
 			newView.setVisibility(View.VISIBLE);
 			layout.addView(newView, mIndexOfWebView);
-			
+						
 			mAddressBar.setTitle(newView.getUrl());
 			mProgressBar.setProgress(newView.getProgress());
 		}
@@ -136,6 +158,7 @@ public final class HawkBrowser extends Activity
 		mNavigationBar.setSelectWindowText(viewCount);
 		
 		newView.requestFocus();
+		mCurrentView = newView;
 	}
 	
 	/* disable options menu
@@ -205,6 +228,8 @@ public final class HawkBrowser extends Activity
 		ArrayList<String> titles = new ArrayList<String>();
 		ArrayList<Bitmap> bitmaps = new ArrayList<Bitmap>();
 		
+		updateViewThumbnail(mCurrentView);
+		
 		for(HawkWebView wv : mViews) {
 			
 			String title = wv.getTitle();
@@ -213,13 +238,10 @@ public final class HawkBrowser extends Activity
 			}
 			
 			titles.add(title);	
-			
-			Bitmap webBmp = Bitmap.createBitmap(wv.getWidth(), wv.getHeight(),
-                    Bitmap.Config.ARGB_8888);
-			
+						
+			Bitmap webBmp = (Bitmap) wv.getTag();
 			// Bitmap webBmp = ImageUtil.loadBitmapFromView(wv);
-			wv.drawToBitmap(webBmp);
-			
+						
 			bitmaps.add(webBmp);
 		}
 		
@@ -239,6 +261,7 @@ public final class HawkBrowser extends Activity
 			
 			@Override
 			public void onItemClose(int i) {
+								
 				mViews.get(i).destroy();
 				mViews.remove(i);
 				
@@ -408,7 +431,7 @@ public final class HawkBrowser extends Activity
 		// TODO Auto-generated method stub
 		if(keyCode == KeyEvent.KEYCODE_BACK) {
 			long time = System.currentTimeMillis();
-			if(mPrevBackKeyUpTime == 0 || time - mPrevBackKeyUpTime < 1500) {
+			if(mPrevBackKeyUpTime == 0 || time - mPrevBackKeyUpTime < 2000) {
 				mPrevBackKeyUpTime = time;
 			} else {
 				
