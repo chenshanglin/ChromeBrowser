@@ -203,9 +203,9 @@ public class WebViewSelecter implements View.OnTouchListener {
     	if(null != mPopup) {
     		mPopup.dismiss();
     		
-    		for(Bitmap bitmap : mBitmaps) {
-    			bitmap.recycle();
-    		}
+//    		for(Bitmap bitmap : mBitmaps) {
+//    			bitmap.recycle();
+//    		}
     		
     		mBitmaps.clear();
     		mPopup = null;

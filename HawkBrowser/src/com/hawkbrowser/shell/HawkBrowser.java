@@ -261,7 +261,13 @@ public final class HawkBrowser extends Activity
 			
 			@Override
 			public void onItemClose(int i) {
-								
+				
+				Bitmap thumbnail = (Bitmap)mViews.get(i).getTag();
+				if(null != thumbnail) {
+					thumbnail.recycle();
+					mViews.get(i).setTag(null);
+				}
+				
 				mViews.get(i).destroy();
 				mViews.remove(i);
 				
